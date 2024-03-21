@@ -2,4 +2,8 @@
 using System.Text;
 
 ConnectionFactory connectionFactory = new ConnectionFactory();
-connectionFactory.Uri = new Uri()
+
+string username = Environment.GetEnvironmentVariable("RABBIT_USERNAME");
+string password = Environment.GetEnvironmentVariable("RABBIT_PASSWORD");
+
+connectionFactory.Uri = new Uri($"amqp://{username}:{password}");
