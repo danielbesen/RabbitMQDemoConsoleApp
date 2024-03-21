@@ -6,4 +6,4 @@ ConnectionFactory connectionFactory = new ConnectionFactory();
 string username = Environment.GetEnvironmentVariable("RABBIT_USERNAME");
 string password = Environment.GetEnvironmentVariable("RABBIT_PASSWORD");
 
-connectionFactory.Uri = new Uri($"amqp://{username}:{password}");
+connectionFactory.Uri = new Uri($"amqp://{username}:{password}@localhost:5672");
