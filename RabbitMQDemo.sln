@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitSender", "RabbitSender\RabbitSender.csproj", "{B0465F23-869E-4D88-A2CA-387990D96445}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitReceiverZero", "RabbitReceiverZero\RabbitReceiverZero.csproj", "{0040C3ED-5A4D-4423-975F-03250DED209E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B0465F23-869E-4D88-A2CA-387990D96445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0465F23-869E-4D88-A2CA-387990D96445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0465F23-869E-4D88-A2CA-387990D96445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0040C3ED-5A4D-4423-975F-03250DED209E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0040C3ED-5A4D-4423-975F-03250DED209E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0040C3ED-5A4D-4423-975F-03250DED209E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0040C3ED-5A4D-4423-975F-03250DED209E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
