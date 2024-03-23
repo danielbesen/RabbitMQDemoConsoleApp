@@ -20,7 +20,6 @@ IConnection cnn = connectionFactory.CreateConnection();
 
 //set channel
 using (IModel channel = cnn.CreateModel()){
-
     string exchangeName = "DemoExchange";
     string routingKey = "demo-routing-key";
     string queueName = "DemoQueue";
@@ -35,7 +34,8 @@ using (IModel channel = cnn.CreateModel()){
         Age = 25,
         Email = "nielb@gmail.com",
         FirstName = "Daniel",
-        LastName = "de Sá Besen"
+        LastName = "de Sá Besen",
+        Processed = false
     };
 
     string jsonMessage = JsonConvert.SerializeObject(user);
