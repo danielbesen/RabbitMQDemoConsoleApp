@@ -30,6 +30,7 @@ using (IModel channel = cnn.CreateModel())
     var consumer = new EventingBasicConsumer(channel);
     consumer.Received += (sender, args) =>
     {
+        Task.Delay(TimeSpan.FromSeconds(5)).Wait();    //Simulate some work
         var body = args.Body.ToArray();
         string message = Encoding.UTF8.GetString(body);
 
@@ -38,6 +39,7 @@ using (IModel channel = cnn.CreateModel())
         Console.WriteLine($"Message received: {user}");
         user.Processed = true;
         Console.WriteLine($"Message processed: {user}");
+        Console.WriteLine();
 
         channel.BasicAck(args.DeliveryTag, false);
     };
