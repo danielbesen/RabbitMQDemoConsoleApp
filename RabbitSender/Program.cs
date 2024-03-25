@@ -29,19 +29,20 @@ using (IModel channel = cnn.CreateModel()){
     channel.QueueDeclare(queueName, false, false, false, null);
     channel.QueueBind(queueName, exchangeName, routingKey);
 
-    User user = new User()
+
+    string jsonDatabase = "";
+    using (StreamReader r = new StreamReader(@"C:\Users\Daniel\Desktop\Projects\RabbitMQDemo\RabbitSender\Database\rabbitproject-database.json"))
     {
-        Age = 25,
-        Email = "nielb@gmail.com",
-        FirstName = "Daniel",
-        LastName = "de Sá Besen",
-        Processed = false
-    };
+        jsonDatabase = r.ReadToEnd();
+    }
 
-    string jsonMessage = JsonConvert.SerializeObject(user);
+    List<User> users = JsonConvert.DeserializeObject<List<User>>(jsonDatabase);
+
+    string jsonMessage = JsonConvert.SerializeObject(users);
     var encondedMessage = Encoding.UTF8.GetBytes(jsonMessage);
-
     channel.BasicPublish(exchangeName, routingKey, null, encondedMessage);
+
+
     channel.Close();
     cnn.Close();
 };
