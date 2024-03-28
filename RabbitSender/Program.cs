@@ -31,17 +31,21 @@ using (IModel channel = cnn.CreateModel()){
 
 
     string jsonDatabase = "";
-    using (StreamReader r = new StreamReader(@"C:\Users\Daniel\Desktop\Projects\RabbitMQDemo\RabbitSender\Database\rabbitproject-database.json"))
+    using (StreamReader r = new StreamReader(@Environment.GetEnvironmentVariable("DATABASE_PATH")))
     {
         jsonDatabase = r.ReadToEnd();
     }
 
     List<User> users = JsonConvert.DeserializeObject<List<User>>(jsonDatabase);
 
-    string jsonMessage = JsonConvert.SerializeObject(users);
-    var encondedMessage = Encoding.UTF8.GetBytes(jsonMessage);
-    channel.BasicPublish(exchangeName, routingKey, null, encondedMessage);
-
+    foreach (var user in users)
+    {
+        Console.WriteLine($"Sending user: {user}");
+        string jsonMessage = JsonConvert.SerializeObject(user);
+        var encondedMessage = Encoding.UTF8.GetBytes(jsonMessage);
+        channel.BasicPublish(exchangeName, routingKey, null, encondedMessage);
+        Thread.Sleep(1000);
+    }
 
     channel.Close();
     cnn.Close();

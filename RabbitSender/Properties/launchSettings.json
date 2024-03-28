@@ -7,7 +7,8 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "RABBIT_USERNAME": "guest",
-        "RABBIT_PASSWORD": "guest"
+        "RABBIT_PASSWORD": "guest",
+        "DATABASE_PATH": "C:\\Users\\Daniel\\Desktop\\Projects\\RabbitMQDemo\\RabbitSender\\Database\\rabbitproject-database.json"
       }
     }
   }
