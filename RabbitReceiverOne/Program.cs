@@ -10,7 +10,7 @@ string password = Environment.GetEnvironmentVariable("RABBIT_PASSWORD");
 ConnectionFactory connection = new ConnectionFactory()
 {
     Uri = new Uri($"amqp://{username}:{password}@localhost:5672"),
-    ClientProvidedName = "Rabbit Receiver APP Zero"
+    ClientProvidedName = "Rabbit Receiver APP One"
 };
 
 IConnection cnn = connection.CreateConnection();
@@ -30,7 +30,7 @@ using (IModel channel = cnn.CreateModel())
     var consumer = new EventingBasicConsumer(channel);
     consumer.Received += (sender, args) =>
     {
-        Task.Delay(TimeSpan.FromSeconds(5)).Wait();    //Simulate some work
+        Task.Delay(TimeSpan.FromSeconds(3)).Wait();    //Simulate some work
         var body = args.Body.ToArray();
         string message = Encoding.UTF8.GetString(body);
 
